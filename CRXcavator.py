@@ -8,6 +8,8 @@ import time
 import io
 from tkinter import filedialog
 from tkinter import *
+import urllib3
+urllib3.disable_warnings()
 
 SUBMIT_URL = 'https://api.crxcavator.io/v1/submit'
 # RESULTS_URL = 'https://api.crxcavator.io/v1/metadata/{extension_id}'
@@ -36,7 +38,7 @@ def scan_extension(id):
 
 
 def submit_extension(extension):
-    res = requests.get('https://api.crxcavator.io/v1/metadata/%s' % extension).json()
+    res = requests.get('https://api.crxcavator.io/v1/metadata/%s' % extension, verify=False).json()
     if res is None:
         print(extension + "is not found, submitting for scan.")
         scan_extension(extension)
