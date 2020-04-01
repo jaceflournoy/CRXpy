@@ -1,4 +1,6 @@
-# Script to Automate
+# Script to Automate CRXcavator extension submissions
+# Authors: Jace Flournoy / Arturo Magdaleno
+# Github: https://github.com/jaceflournoy/CRXpy
 
 import requests
 import json
@@ -9,12 +11,13 @@ from tkinter import *
 
 SUBMIT_URL = 'https://api.crxcavator.io/v1/submit'
 # RESULTS_URL = 'https://api.crxcavator.io/v1/metadata/{extension_id}'
-API_KEY = 'fsgqjSSovyhzlLxGagIkwlPSMwKHXPSr'
-
+API_KEY = input("Please Input your API Key from https://crxcavator.io/user/settings - Note: This isn't manadatory:\n")
+print("Please select a .txt file containing your extension id list. (Prompt will open)")
+time.sleep(2)
 extension_id = []
 bad_extension = []
 root = Tk()
-root.filename = filedialog.askopenfilename(initialdir = "/",title = "Select Extension List file",filetypes = (("text files","*.txt"),("all files","*.*")))
+root.filename = filedialog.askopenfilename(initialdir = "C:/Users/",title = "Select Extension List file",filetypes = (("txt files","*.txt"),("all files","*.*")))
 with open(root.filename, "r") as extensionList:
     for line in extensionList:
         stripped_line = line.strip()
